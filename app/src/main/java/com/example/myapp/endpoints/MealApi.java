@@ -21,4 +21,7 @@ public interface MealApi {
      */
     @GET("categories.php")
     Call<CategoriesResponse> getCategories();
+
+    @GET("filter.php")
+    Call<CategoriesResponse> getMealByMainIngrediant();
 }

@@ -51,6 +51,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
         // Fetch categories from the API
         fetchCategories();
+        fetchMealByMainIngrediant();
     }
 
     /**
@@ -68,6 +69,37 @@ public class CategoriesActivity extends AppCompatActivity {
         MealApi mealApi = retrofit.create(MealApi.class);
 
         // Make an asynchronous API call to fetch categories
+        mealApi.getCategories().enqueue(new Callback<CategoriesResponse>() {
+            /**
+             * Called when the API call is successful.
+             * Updates the RecyclerView with the received categories.
+             */
+            @Override
+            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Category> categories = response.body().getCategories();
+                    adapter.setCategories(categories); // Update adapter with new data
+                }
+            }
+
+            /**
+             * Called when the API call fails.
+             * Displays a Toast message indicating the error.
+             */
+            @Override
+            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
+                Toast.makeText(CategoriesActivity.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void fetchMealByMainIngrediant(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.themealdb.com/api/json/v1/1/") // Base URL for API
+                .addConverterFactory(GsonConverterFactory.create()) // Converts JSON response into Java objects
+                .build();
+
+        MealApi mealApi = retrofit.create(MealApi.class);
+
         mealApi.getCategories().enqueue(new Callback<CategoriesResponse>() {
             /**
              * Called when the API call is successful.
