@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapp.R;
 import com.example.myapp.features.categories.CategoriesActivity;
+import com.example.myapp.features.search.SearchActivity;
 
 /**
  * HomeActivity serves as the main entry point of the application.
@@ -29,5 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         // Set up button click listener to navigate to CategoriesActivity
         findViewById(R.id.btn_view_categories).setOnClickListener(v ->
                 startActivity(new Intent(this, CategoriesActivity.class)));
+        findViewById(R.id.btn_search_meal).setOnClickListener(v ->
+                startActivity(new Intent(this, SearchActivity.class)));
     }
 }

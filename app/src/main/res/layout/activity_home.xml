@@ -7,6 +7,12 @@
     android:padding="16dp">
 
     <Button
+        android:id="@+id/btn_search_meal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Meal by Name" />
+
+    <Button
         android:id="@+id/btn_view_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -24,7 +24,7 @@
         </activity>
 
         <activity android:name=".features.categories.CategoriesActivity" />
-
+        <activity android:name=".features.search.SearchActivity" />
     </application>
 
 </manifest>
