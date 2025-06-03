@@ -71,7 +71,7 @@ public class SearchActivity extends AppCompatActivity {
         MealApi mealApi = retrofit.create(MealApi.class);
 
         // Make an asynchronous API call to fetch meal
-        mealApi.getMealByName("pasta").enqueue(new Callback<SearchResponse>() {
+        mealApi.getMealByName("chocolate").enqueue(new Callback<SearchResponse>() {
             /**
              * Called when the API call is successful.
              * Updates the RecyclerView with the received categories.

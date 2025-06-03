@@ -20,7 +20,7 @@ import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MealViewHolder> {
     // List of categories to display
-    private List<Meal> meals;
+    private List<Meal> meals = new ArrayList<>();
 
     /**
      * Updates the category list and refreshes the RecyclerView.
@@ -28,7 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MealViewHo
      * @param meals List of categories retrieved from the API.
      */
     public void setMeals(List<Meal> meals) {
-        this.meals = meals;
+        this.meals = meals != null ? meals : new ArrayList<>();
         notifyDataSetChanged(); // Notifies RecyclerView to rebind data
     }
 
@@ -43,7 +43,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MealViewHo
     @Override
     public SearchAdapter.MealViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the layout for a single category item
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
         return new SearchAdapter.MealViewHolder(view);
     }
 
